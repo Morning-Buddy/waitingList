@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 export function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
     <header 
       className="w-full border-b-4 border-[var(--mascot-orange)]/20 bg-white/90 backdrop-blur-sm"
@@ -58,24 +62,61 @@ export function Header() {
             </Link>
           </nav>
 
-          {/* Mobile menu button - for future implementation */}
+          {/* Mobile menu button */}
           <button
             className="md:hidden p-3 text-gray-600 hover:text-[var(--mascot-orange)] focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2 rounded-[var(--radius-bubble)] mascot-pop hover:bg-[var(--mascot-orange)]/5"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
+            aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMobileMenuOpen}
             type="button"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            {isMobileMenuOpen ? (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
           </button>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-[var(--mascot-orange)]/20 bg-white/95 backdrop-blur-sm">
+            <nav className="px-4 py-4 space-y-2" role="navigation" aria-label="Mobile navigation">
+              <Link 
+                href="#how-it-works" 
+                className="block px-4 py-3 text-gray-600 hover:text-[var(--mascot-orange)] hover:bg-[var(--mascot-orange)]/5 rounded-[var(--radius-bubble)] font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+                aria-label="Learn how Morning Buddy works"
+              >
+                How it works
+              </Link>
+              <Link 
+                href="#faq" 
+                className="block px-4 py-3 text-gray-600 hover:text-[var(--mascot-orange)] hover:bg-[var(--mascot-orange)]/5 rounded-[var(--radius-bubble)] font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+                aria-label="Frequently asked questions"
+              >
+                FAQ
+              </Link>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );

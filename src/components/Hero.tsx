@@ -43,14 +43,28 @@ export function Hero() {
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-200/20 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Sun Mascot - Mobile First */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+            className="flex justify-center lg:justify-end lg:order-2"
+          >
+            <SunMascot
+              expression={displayExpression}
+              size={300} // Smaller on mobile
+              className="drop-shadow-2xl lg:w-[400px]"
+            />
+          </motion.div>
+
           {/* Text content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center lg:text-left space-y-8 motion-reduce:transition-none"
+            className="text-center lg:text-left space-y-6 lg:space-y-8 motion-reduce:transition-none lg:order-1"
           >
             <div className="space-y-4">
               <motion.h1
@@ -58,7 +72,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight"
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight"
               >
                 Morning{" "}
                 <span className="mascot-gradient-text">
@@ -70,7 +84,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto lg:mx-0"
+                className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-2xl mx-auto lg:mx-0"
               >
                 Get a morning call from an AI buddy instead of a jarring alarm
               </motion.p>
@@ -80,11 +94,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
               <AnimatedButton
                 size="lg"
-                className="gradient-button text-lg mascot-float"
+                className="gradient-button text-base sm:text-lg mascot-float px-6 py-3 sm:px-8 sm:py-4"
                 onClick={() => setIsModalOpen(true)}
                 aria-describedby="cta-description"
               >
@@ -95,7 +109,7 @@ export function Hero() {
               </p>
 
               <button
-                className="px-8 py-4 text-lg font-medium text-gray-700 hover:text-[var(--mascot-orange)] transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2 rounded-[var(--radius-bubble)] mascot-pop bg-white/80 hover:bg-white border-2 border-transparent hover:border-[var(--mascot-orange)]/20"
+                className="px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-medium text-gray-700 hover:text-[var(--mascot-orange)] transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2 rounded-[var(--radius-bubble)] mascot-pop bg-white/80 hover:bg-white border-2 border-transparent hover:border-[var(--mascot-orange)]/20"
                 onClick={() => {
                   const howItWorksSection = document.getElementById('how-it-works');
                   howItWorksSection?.scrollIntoView({ behavior: 'smooth' });
@@ -103,7 +117,7 @@ export function Hero() {
                 aria-label="Learn more about Morning Buddy"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -116,19 +130,7 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Sun Mascot */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-            className="flex justify-center lg:justify-end"
-          >
-            <SunMascot
-              expression={displayExpression}
-              size={400}
-              className="drop-shadow-2xl"
-            />
-          </motion.div>
+
         </div>
       </div>
 

@@ -130,7 +130,7 @@ export function Callout() {
             Ready to revolutionize your mornings?
           </p>
           <button
-            className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-4 rounded-full font-semibold text-lg professional-button gradient-button focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+            className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-base sm:text-lg professional-button gradient-button focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
             onClick={() => {
               // Scroll to top and trigger the main CTA
               window.scrollTo({ top: 0, behavior: 'smooth' });
