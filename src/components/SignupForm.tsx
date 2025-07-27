@@ -90,7 +90,7 @@ export function SignupForm({ onSuccess, onClose }: SignupFormProps) {
       // You can replace this with Netlify Forms, Formspree, or similar service
       
       // Option 1: Use Formspree (recommended for GitHub Pages)
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const response = await fetch('https://formspree.io/f/xdkogkgv', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
