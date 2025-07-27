@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { CountResponse } from '@/lib/types'
+// import { CountResponse } from '@/lib/types' // Not needed for static version
 
 interface SocialProofProps {
   className?: string
@@ -10,7 +10,6 @@ interface SocialProofProps {
 export function SocialProof({ className = '' }: SocialProofProps) {
   const [signupCount, setSignupCount] = useState<number | null>(null)
   const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     // For GitHub Pages, we'll show a static count or hide the counter
@@ -59,11 +58,6 @@ export function SocialProof({ className = '' }: SocialProofProps) {
               <div className="h-8 bg-amber-200 rounded-lg w-96 mx-auto mb-4"></div>
               <div className="h-4 bg-amber-100 rounded w-64 mx-auto"></div>
               <span className="sr-only">Loading signup count...</span>
-            </div>
-          ) : error ? (
-            <div className="text-amber-700" role="alert">
-              <p id="social-proof-heading" className="text-2xl font-semibold mb-2">Join our growing community</p>
-              <p className="text-amber-600">of people excited for a better way to wake up</p>
             </div>
           ) : (
             <div className="text-amber-800">

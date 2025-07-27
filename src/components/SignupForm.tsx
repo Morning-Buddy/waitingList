@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 // import { Input } from "@/components/ui/input"; // Using custom bubble-input
 // import { LoadingSpinner } from "@/components/LoadingSpinner"; // Using custom mascot-spinner
-import { signupFormSchema, type CreateWaitlistEntry, type SubscribeResponse } from "@/lib/types";
+import { signupFormSchema, type CreateWaitlistEntry } from "@/lib/types";
 import { sanitizeInput } from "@/lib/types";
 import { cn } from "@/lib/utils";
 

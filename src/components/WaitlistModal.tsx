@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import {
   Dialog,
   DialogContent,
@@ -117,9 +118,11 @@ export function WaitlistModal({ isOpen, onClose, onSuccess }: WaitlistModalProps
       >
         <DialogHeader className="space-y-4 text-center">
           <div className="flex justify-center">
-            <img 
+            <Image 
               src="/Logo.svg" 
               alt="Morning Buddy Logo" 
+              width={64}
+              height={64}
               className="w-16 h-16 mascot-float"
             />
           </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Header() {
   return (
@@ -16,9 +17,11 @@ export function Header() {
             <div className="flex items-center space-x-3">
               {/* Morning Buddy Logo */}
               <div className="w-10 h-10 rounded-[var(--radius-bubble)] bg-white shadow-lg mascot-float flex items-center justify-center">
-                <img 
+                <Image 
                   src="/Logo.svg" 
                   alt="Morning Buddy Logo" 
+                  width={32}
+                  height={32}
                   className="w-8 h-8"
                 />
               </div>
