@@ -1,0 +1,60 @@
+{
+  "timestamp": "2025-07-25T05:18:45.844Z",
+  "passed": 1,
+  "failed": 7,
+  "tests": [
+    {
+      "name": "Complete Signup Flow",
+      "status": "failed",
+      "duration": 134,
+      "error": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    {
+      "name": "Email Confirmation Process",
+      "status": "passed",
+      "duration": 0,
+      "error": null
+    },
+    {
+      "name": "Analytics Tracking",
+      "status": "failed",
+      "duration": 116,
+      "error": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    {
+      "name": "Cross-Browser Compatibility",
+      "status": "failed",
+      "duration": 119,
+      "error": "Chromium compatibility failed: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    {
+      "name": "Device Compatibility",
+      "status": "failed",
+      "duration": 106,
+      "error": "Desktop compatibility failed: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    {
+      "name": "Conversion Optimization Features",
+      "status": "failed",
+      "duration": 108,
+      "error": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    {
+      "name": "Accessibility Compliance",
+      "status": "failed",
+      "duration": 112,
+      "error": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    {
+      "name": "Performance Metrics",
+      "status": "failed",
+      "duration": 125,
+      "error": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3000/\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  ],
+  "summary": {
+    "totalTests": 8,
+    "passRate": 12.5,
+    "duration": 820
+  }
+}

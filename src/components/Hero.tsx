@@ -1,0 +1,143 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { AnimatedButton } from "./AnimatedButton";
+import { WaitlistModal } from "./WaitlistModal";
+import { SunMascot } from "./SunMascot/SunMascot";
+import { type Expression } from "./SunMascot/expressions";
+
+export function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentExpression, setCurrentExpression] = useState<Expression>('idle');
+
+  // Listen for custom event to open modal from other components
+  useEffect(() => {
+    const handleOpenModal = () => setIsModalOpen(true);
+    window.addEventListener('openWaitlistModal', handleOpenModal);
+    return () => window.removeEventListener('openWaitlistModal', handleOpenModal);
+  }, []);
+
+  // Handle successful waitlist submission
+  const handleWaitlistSuccess = () => {
+    setCurrentExpression('excited');
+    // Show excited expression for 3 seconds, then return to idle
+    setTimeout(() => {
+      setCurrentExpression('idle');
+    }, 3000);
+  };
+
+  // Determine which expression to show
+  const displayExpression: Expression = currentExpression;
+
+  return (
+    <section
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 overflow-hidden"
+      id="main-content"
+      aria-labelledby="hero-heading"
+      role="main"
+    >
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-amber-200/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-orange-200/20 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 py-20 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Text content */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center lg:text-left space-y-8 motion-reduce:transition-none"
+          >
+            <div className="space-y-4">
+              <motion.h1
+                id="hero-heading"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight"
+              >
+                Morning{" "}
+                <span className="mascot-gradient-text">
+                  Buddy
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto lg:mx-0"
+              >
+                Get a morning call from an AI buddy instead of a jarring alarm
+              </motion.p>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <AnimatedButton
+                size="lg"
+                className="gradient-button text-lg mascot-float"
+                onClick={() => setIsModalOpen(true)}
+                aria-describedby="cta-description"
+              >
+                Join Waiting List
+              </AnimatedButton>
+              <p id="cta-description" className="sr-only">
+                Click to open the waiting list signup form and be notified when Morning Buddy launches
+              </p>
+
+              <button
+                className="px-8 py-4 text-lg font-medium text-gray-700 hover:text-[var(--mascot-orange)] transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2 rounded-[var(--radius-bubble)] mascot-pop bg-white/80 hover:bg-white border-2 border-transparent hover:border-[var(--mascot-orange)]/20"
+                onClick={() => {
+                  const howItWorksSection = document.getElementById('how-it-works');
+                  howItWorksSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                aria-label="Learn more about Morning Buddy"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Learn More
+              </button>
+            </motion.div>
+          </motion.div>
+
+          {/* Sun Mascot */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+            className="flex justify-center lg:justify-end"
+          >
+            <SunMascot
+              expression={displayExpression}
+              size={400}
+              className="drop-shadow-2xl"
+            />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Waitlist Modal */}
+      <WaitlistModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSuccess={handleWaitlistSuccess}
+      />
+    </section>
+  );
+}
