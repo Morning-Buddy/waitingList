@@ -1,10 +1,19 @@
 import type { NextConfig } from "next";
 
+// Check if we're building for GitHub Pages
+const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
+
 const nextConfig: NextConfig = {
   // Enable static export for GitHub Pages
   output: 'export',
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
+  
+  // GitHub Pages configuration - only add basePath if building for GitHub Pages
+  ...(isGithubPages && {
+    basePath: '/waitingList',
+    assetPrefix: '/waitingList/',
+  }),
   
 
   
