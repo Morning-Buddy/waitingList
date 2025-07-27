@@ -86,37 +86,37 @@ export function SignupForm({ onSuccess, onClose }: SignupFormProps) {
         gdprConsent: formData.gdprConsent,
       };
 
-      const response = await fetch('/api/subscribe', {
+      // For GitHub Pages deployment, we'll use a form submission service
+      // You can replace this with Netlify Forms, Formspree, or similar service
+      
+      // Option 1: Use Formspree (recommended for GitHub Pages)
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(sanitizedData),
+        body: JSON.stringify({
+          email: sanitizedData.email,
+          name: sanitizedData.name || 'Anonymous',
+          gdprConsent: sanitizedData.gdprConsent,
+          source: 'Morning Buddy Waitlist',
+        }),
       });
 
-      const data: SubscribeResponse = await response.json();
-
-      if (data.success) {
-        toast.success(data.message, {
+      if (response.ok) {
+        toast.success("Successfully joined the waitlist!", {
           description: "We'll notify you when Morning Buddy is ready!",
           duration: 5000,
         });
         onSuccess();
       } else {
-        // Handle specific error cases
-        if (response.status === 409) {
-          // Email already exists
-          setErrors({ email: data.message });
-        } else if (response.status === 400) {
-          // Validation errors
-          setErrors({ general: data.message });
-        } else {
-          // General server error
-          setErrors({ general: data.message });
-        }
+        // Handle error cases
+        const errorData = await response.json().catch(() => ({}));
+        const errorMessage = errorData.error || "Failed to join waitlist. Please try again.";
         
+        setErrors({ general: errorMessage });
         toast.error("Signup failed", {
-          description: data.message,
+          description: errorMessage,
         });
       }
     } catch (error) {

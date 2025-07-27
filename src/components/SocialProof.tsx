@@ -13,25 +13,14 @@ export function SocialProof({ className = '' }: SocialProofProps) {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const fetchSignupCount = async () => {
-      try {
-        const response = await fetch('/api/count')
-        const data: CountResponse = await response.json()
-        
-        if (data.success && data.data) {
-          setSignupCount(data.data.count)
-        } else {
-          setError(data.message || 'Failed to load signup count')
-        }
-      } catch (err) {
-        setError('Failed to load signup count')
-        console.error('Error fetching signup count:', err)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    fetchSignupCount()
+    // For GitHub Pages, we'll show a static count or hide the counter
+    // You can update this manually or integrate with a third-party service
+    const staticCount = 0; // Update this number manually as needed
+    
+    setTimeout(() => {
+      setSignupCount(staticCount);
+      setIsLoading(false);
+    }, 500); // Simulate loading for better UX
   }, [])
 
   const formatNumber = (num: number): string => {

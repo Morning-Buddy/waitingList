@@ -71,9 +71,55 @@ npm run test:all
 
 ## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### GitHub Pages (Current Setup)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is configured to automatically deploy to GitHub Pages using GitHub Actions:
+
+1. **Automatic Deployment**: Every push to the `main` branch triggers a deployment
+2. **Static Export**: The app is built as a static site (API routes are replaced with third-party services)
+3. **Custom Domain**: Configure your custom domain in the repository settings
+
+#### Setup Steps:
+
+1. Go to your repository settings
+2. Navigate to "Pages" section
+3. Set source to "GitHub Actions"
+4. The site will be available at: `https://morning-buddy.github.io/waitingList`
+
+#### Environment Variables for GitHub Pages:
+
+Add these secrets in your repository settings (Settings > Secrets and variables > Actions):
+
+```
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+#### Third-Party Services for Static Deployment:
+
+Since GitHub Pages doesn't support server-side functionality, the app uses:
+
+- **Formspree** for form submissions (replace `YOUR_FORM_ID` in SignupForm.tsx)
+- **Static counter** for signup count (update manually in SocialProof.tsx)
+
+### Alternative Deployments
+
+#### Vercel (Recommended for Full Features)
+The easiest way to deploy with full API functionality:
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+#### Netlify
+1. Connect your GitHub repository
+2. Set build command: `npm run build`
+3. Set publish directory: `out`
+4. Add environment variables in Netlify dashboard
 
 ## Learn More
 
