@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { AnimatedButton } from "./AnimatedButton";
 import { WaitlistModal } from "./WaitlistModal";
+import { TrustSignals } from "./TrustSignals";
 import { SunMascot } from "./SunMascot/SunMascot";
 import { type Expression } from "./SunMascot/expressions";
 
@@ -74,9 +75,9 @@ export function Hero() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight"
               >
-                Morning{" "}
+                Wake up happy with{" "}
                 <span className="mascot-gradient-text">
-                  Buddy
+                  Morning Buddy
                 </span>
               </motion.h1>
 
@@ -86,30 +87,39 @@ export function Hero() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-2xl mx-auto lg:mx-0"
               >
-                Get a morning call from an AI buddy instead of a jarring alarm
+                Ditch the jarring alarm. Let an AI buddy call you with a personal chat that motivates, entertains and eases you into the day.
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto lg:mx-0"
+              >
+                Morning Buddy isn&apos;t just a wake-up call—it&apos;s a morning companion. Choose the voice and personality you love, get a tailored conversation every morning, and start your day smiling instead of scrambling.
               </motion.p>
             </div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="flex flex-col gap-4 justify-center lg:justify-start max-w-lg mx-auto lg:mx-0"
             >
               <AnimatedButton
                 size="lg"
-                className="gradient-button text-base sm:text-lg mascot-float px-6 py-3 sm:px-8 sm:py-4"
+                className="gradient-button text-lg sm:text-xl font-semibold mascot-float px-8 py-5 sm:px-10 sm:py-6 w-full shadow-xl hover:shadow-2xl transition-all duration-300 leading-relaxed"
                 onClick={() => setIsModalOpen(true)}
                 aria-describedby="cta-description"
               >
-                Join Waiting List
+                Join the waiting list
               </AnimatedButton>
               <p id="cta-description" className="sr-only">
                 Click to open the waiting list signup form and be notified when Morning Buddy launches
               </p>
 
               <button
-                className="px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-medium text-gray-700 hover:text-[var(--mascot-orange)] transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2 rounded-[var(--radius-bubble)] mascot-pop bg-white/80 hover:bg-white border-2 border-transparent hover:border-[var(--mascot-orange)]/20"
+                className="px-6 py-4 sm:px-8 sm:py-4 text-base sm:text-lg font-medium text-gray-700 hover:text-[var(--mascot-orange)] transition-all duration-300 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2 rounded-[var(--radius-bubble)] mascot-pop bg-white/80 hover:bg-white border-2 border-transparent hover:border-[var(--mascot-orange)]/20 w-full"
                 onClick={() => {
                   const howItWorksSection = document.getElementById('how-it-works');
                   howItWorksSection?.scrollIntoView({ behavior: 'smooth' });
@@ -128,6 +138,9 @@ export function Hero() {
                 Learn More
               </button>
             </motion.div>
+
+            {/* Trust Signals */}
+            <TrustSignals variant="hero" className="mt-6" />
           </motion.div>
 
 

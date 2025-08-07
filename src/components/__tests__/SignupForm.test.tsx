@@ -73,7 +73,7 @@ describe('SignupForm', () => {
     fireEvent.click(submitButton);
     
     await waitFor(() => {
-      expect(global.fetch).toHaveBeenCalledWith('/api/subscribe', {
+      expect(global.fetch).toHaveBeenCalledWith('https://formspree.io/f/myzpjgnk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -82,6 +82,7 @@ describe('SignupForm', () => {
           name: 'John Doe',
           email: 'john@example.com',
           gdprConsent: true,
+          source: 'Morning Buddy Waitlist',
         }),
       });
     });

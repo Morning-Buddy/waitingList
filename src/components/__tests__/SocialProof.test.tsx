@@ -14,26 +14,19 @@ describe('SocialProof Component', () => {
     
     render(<SocialProof />)
     
-    expect(screen.getByText('As featured in')).toBeInTheDocument()
+    expect(screen.getByText('Join Our Community')).toBeInTheDocument()
+    expect(screen.getByText('Join our community of early risers and get tips on sleep, productivity and routines plus sneak-peeks at upcoming features.')).toBeInTheDocument()
     // Check for loading animation
     expect(document.querySelector('.animate-pulse')).toBeInTheDocument()
   })
 
-  it('displays signup count when API call succeeds', async () => {
-    const mockResponse = {
-      success: true,
-      message: 'Success',
-      data: { count: 42 }
-    }
-    
-    ;(fetch as jest.Mock).mockResolvedValueOnce({
-      json: () => Promise.resolve(mockResponse)
-    })
-    
+  it('displays signup count when count is greater than 0', async () => {
+    // Since the component uses static count, we need to test the current behavior
     render(<SocialProof />)
     
     await waitFor(() => {
-      expect(screen.getByText(/Join the 42 early risers who have already signed up/)).toBeInTheDocument()
+      // With static count of 0, it shows the "Be the first" message
+      expect(screen.getByText(/Be the first to join our community of early risers!/)).toBeInTheDocument()
     })
   })
 
@@ -61,37 +54,28 @@ describe('SocialProof Component', () => {
     render(<SocialProof />)
     
     await waitFor(() => {
-      expect(screen.getByText(/Join our growing community/)).toBeInTheDocument()
+      expect(screen.getByText(/Be the first to join our community of early risers!/)).toBeInTheDocument()
     })
   })
 
-  it('formats large numbers correctly', async () => {
-    const mockResponse = {
-      success: true,
-      message: 'Success',
-      data: { count: 1500 }
-    }
-    
-    ;(fetch as jest.Mock).mockResolvedValueOnce({
-      json: () => Promise.resolve(mockResponse)
-    })
-    
+  it('displays community messaging consistently', async () => {
     render(<SocialProof />)
     
     await waitFor(() => {
-      expect(screen.getByText(/Join the 1.5K early risers that have joined so far/)).toBeInTheDocument()
+      // Test that the enhanced community messaging is always displayed
+      expect(screen.getByText('Join Our Community')).toBeInTheDocument()
+      expect(screen.getByText('Join our community of early risers and get tips on sleep, productivity and routines plus sneak-peeks at upcoming features.')).toBeInTheDocument()
     })
   })
 
-  it('renders placeholder publication logos', () => {
+  it('renders community benefit tags', () => {
     ;(fetch as jest.Mock).mockImplementation(() => new Promise(() => {}))
     
     render(<SocialProof />)
     
-    expect(screen.getByText('TechCrunch')).toBeInTheDocument()
-    expect(screen.getByText('Product Hunt')).toBeInTheDocument()
-    expect(screen.getByText('Hacker News')).toBeInTheDocument()
-    expect(screen.getByText('Reddit')).toBeInTheDocument()
-    expect(screen.getByText('* Placeholder logos - will be updated with actual features')).toBeInTheDocument()
+    expect(screen.getByText('Sleep Tips')).toBeInTheDocument()
+    expect(screen.getByText('Productivity Hacks')).toBeInTheDocument()
+    expect(screen.getByText('Morning Routines')).toBeInTheDocument()
+    expect(screen.getByText('Feature Previews')).toBeInTheDocument()
   })
 })

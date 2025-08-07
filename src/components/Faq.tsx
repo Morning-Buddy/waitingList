@@ -7,32 +7,32 @@ const faqData = [
   {
     id: "product-details",
     question: "What exactly is Morning Buddy?",
-    answer: "Morning Buddy is an AI-powered alarm clock that wakes you up with a personalized phone call instead of a jarring alarm sound. Your AI buddy can have conversations with you, share motivational messages, or even tell jokes to help you start your day on a positive note. It's like having a friendly companion who genuinely cares about making your mornings better."
+    answer: "Morning Buddy is an AI-powered wake-up service. Instead of a beeping alarm, you receive a phone call from an AI companion that chats with you, shares personalised messages and helps you start your day on a positive note."
   },
   {
     id: "voice-customization", 
-    question: "Can I customize my buddy's voice and personality?",
-    answer: "Absolutely! You can customize your buddy's voice, personality traits, conversation style, and even base it on your favorite characters or people. Whether you want a cheerful motivational coach, a witty comedian, or a calm meditation guide, you can tailor your Morning Buddy to match your preferences and what motivates you most."
+    question: "Can I customise my buddy's voice and personality?",
+    answer: "Yes! Pick from various voices (including celebrity-style and character voices) and set the tone—funny, motivational or calm."
   },
   {
     id: "launch-timeline",
     question: "When will Morning Buddy be available?",
-    answer: "We're currently in development and planning to launch our pre-alpha version in early 2025. By joining our waiting list, you'll be among the first to get early access and help shape the product with your feedback. We'll keep you updated on our progress and notify you as soon as spots become available."
+    answer: "We're aiming to launch our beta in late-2025. Join the waitlist to be among the first testers and receive updates on our progress."
   },
   {
     id: "pricing",
-    question: "How much will Morning Buddy cost?",
-    answer: "We're still finalizing our pricing structure, but we're committed to making Morning Buddy accessible and affordable. Early access users will get special pricing benefits. We're considering a subscription model that covers the AI processing and phone call costs, with different tiers based on usage. More details will be shared with our waiting list members first."
+    question: "How much will it cost?",
+    answer: "We'll offer a free trial when we launch and affordable monthly plans afterwards. Pricing details will be shared with waitlist members first."
   },
   {
     id: "how-it-works",
-    question: "How does the wake-up call actually work?",
-    answer: "Morning Buddy calls your phone at your scheduled wake-up time using advanced AI voice technology. The call feels natural and conversational - your buddy might ask how you slept, share the weather, give you encouragement for the day ahead, or engage in whatever type of conversation you've configured. You can set different conversation styles for different days or moods."
+    question: "How does the wake-up call work?",
+    answer: "Your phone will ring at the scheduled time. You'll hear your chosen voice and can interact naturally. Morning Buddy uses advanced AI to hold a conversation and keep you engaged."
   },
   {
     id: "privacy-security",
     question: "Is my personal information and sleep data secure?",
-    answer: "Privacy and security are our top priorities. We use enterprise-grade encryption for all data transmission and storage. Your personal information, preferences, and conversation history are never shared with third parties. You have full control over your data and can delete it at any time. We follow strict data protection regulations including GDPR compliance."
+    answer: "Absolutely. We use end-to-end encryption for all calls and store only the scheduling data necessary to make your calls. We comply with UK data protection regulations."
   }
 ];
 

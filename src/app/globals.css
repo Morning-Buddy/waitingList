@@ -163,15 +163,15 @@
     }
     
     .text-gray-600 {
-      @apply text-gray-900;
-    }
-    
-    .text-gray-500 {
       @apply text-gray-800;
     }
     
-    .text-gray-400 {
+    .text-gray-500 {
       @apply text-gray-700;
+    }
+    
+    .text-gray-400 {
+      @apply text-gray-600;
     }
     
     /* Ensure sufficient contrast for gradient text */
@@ -189,6 +189,58 @@
     /* Enhanced link contrast */
     a:not(.skip-link) {
       @apply underline decoration-2 underline-offset-2;
+    }
+  }
+  
+  /* Ensure WCAG AA contrast ratios */
+  .text-gray-600 {
+    color: #4b5563; /* Ensures 4.5:1 contrast ratio on white background */
+  }
+  
+  .text-gray-500 {
+    color: #374151; /* Improved contrast for better readability */
+  }
+  
+  /* Sticky header styles */
+  .sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Mobile navigation improvements */
+  @media (max-width: 768px) {
+    .mobile-nav-button {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    .mobile-nav-link {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  /* Focus improvements for navigation */
+  .nav-button:focus-visible,
+  .nav-link:focus-visible {
+    outline: 2px solid #f59e0b;
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+  
+  /* Smooth scrolling with reduced motion support */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
     }
   }
   

@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 // import { Input } from "@/components/ui/input"; // Using custom bubble-input
 // import { LoadingSpinner } from "@/components/LoadingSpinner"; // Using custom mascot-spinner
+import { TrustSignals } from "./TrustSignals";
 import { signupFormSchema, type CreateWaitlistEntry } from "@/lib/types";
 import { sanitizeInput } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -86,11 +87,8 @@ export function SignupForm({ onSuccess, onClose }: SignupFormProps) {
         gdprConsent: formData.gdprConsent,
       };
 
-      // For GitHub Pages deployment, we'll use a form submission service
-      // You can replace this with Netlify Forms, Formspree, or similar service
-      
-      // Option 1: Use Formspree (recommended for GitHub Pages)
-      const response = await fetch('https://formspree.io/f/xdkogkgv', {
+      // Use Formspree for form submission
+      const response = await fetch('https://formspree.io/f/myzpjgnk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -105,7 +103,7 @@ export function SignupForm({ onSuccess, onClose }: SignupFormProps) {
 
       if (response.ok) {
         toast.success("Successfully joined the waitlist!", {
-          description: "We'll notify you when Morning Buddy is ready!",
+          description: "We'll get in touch when Morning Buddy is ready!",
           duration: 5000,
         });
         onSuccess();
@@ -191,7 +189,7 @@ export function SignupForm({ onSuccess, onClose }: SignupFormProps) {
           )}
         />
         <p id="email-description" className="sr-only">
-          Required field for your email address to receive Morning Buddy updates
+          Required field for your email address so we can contact you about Morning Buddy
         </p>
         {errors.email && (
           <p id="email-error" className="text-sm text-red-600 font-medium" role="alert">
@@ -223,11 +221,11 @@ export function SignupForm({ onSuccess, onClose }: SignupFormProps) {
               htmlFor="gdpr-consent" 
               className="text-sm text-gray-700 leading-6 cursor-pointer font-medium"
             >
-              I agree to receive early-access emails about Morning Buddy{" "}
+              I agree to be contacted about Morning Buddy{" "}
               <span className="text-red-500" aria-label="required">*</span>
             </label>
             <p id="gdpr-description" className="text-xs text-gray-500 mt-2 leading-relaxed">
-              We&apos;ll only send you updates about Morning Buddy. You can unsubscribe at any time.
+              We&apos;ll only contact you about Morning Buddy updates.
             </p>
           </div>
         </div>
@@ -237,6 +235,9 @@ export function SignupForm({ onSuccess, onClose }: SignupFormProps) {
           </p>
         )}
       </div>
+
+      {/* Trust Signals */}
+      <TrustSignals variant="form" />
 
       {/* General error message */}
       {errors.general && (

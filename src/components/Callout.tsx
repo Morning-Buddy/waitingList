@@ -6,7 +6,7 @@ const steps = [
   {
     number: "01",
     title: "Build a Buddy",
-    description: "Customise the buddies voice and personality to match the people/characters you love",
+    description: "Build your buddy: Choose from a library of voices (celebrity impersonations, calm coaches or quirky characters) and set a personality that suits you—whether you want jokes, gentle encouragement or morning affirmations.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -16,7 +16,7 @@ const steps = [
   {
     number: "02", 
     title: "Set Schedule",
-    description: "Set a time you want to be woken up and how, with a funny conversation or maybe something more motivational",
+    description: "Set your wake-up plan: Pick the days and times you want to be called. Add preferences like 'daily pep talk,' 'weather & calendar brief,' or 'just a cheerful hello' so your buddy knows what you need.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -26,7 +26,7 @@ const steps = [
   {
     number: "03",
     title: "Wake Up Happy", 
-    description: "A better way to wake up, start your day with a boost from a buddy",
+    description: "Enjoy better mornings: At your chosen time, your AI buddy gives you a personalised call. Chat, laugh and receive tips to set a positive tone. With Morning Buddy, every wake-up is friendly and stress-free.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

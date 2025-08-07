@@ -2,13 +2,44 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Handle scroll effect for sticky header
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Handle smooth scrolling to sections
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerHeight = 80; // Account for sticky header
+      const elementPosition = element.offsetTop - headerHeight;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header 
-      className="w-full border-b-4 border-[var(--mascot-orange)]/20 bg-white/90 backdrop-blur-sm"
+      className={`fixed top-0 left-0 right-0 z-50 w-full border-b-4 border-[var(--mascot-orange)]/20 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
+          : 'bg-white/90 backdrop-blur-sm'
+      }`}
       role="banner"
     >
       <div className="container mx-auto px-4 py-4">
@@ -46,20 +77,20 @@ export function Header() {
             role="navigation"
             aria-label="Main navigation"
           >
-            <Link 
-              href="#how-it-works" 
+            <button 
+              onClick={() => scrollToSection('how-it-works')}
               className="text-gray-600 hover:text-[var(--mascot-orange)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2 rounded-[var(--radius-bubble)] px-4 py-2 font-medium mascot-pop hover:bg-[var(--mascot-orange)]/5"
               aria-label="Learn how Morning Buddy works"
             >
               How it works
-            </Link>
-            <Link 
-              href="#faq" 
+            </button>
+            <button 
+              onClick={() => scrollToSection('faq')}
               className="text-gray-600 hover:text-[var(--mascot-orange)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2 rounded-[var(--radius-bubble)] px-4 py-2 font-medium mascot-pop hover:bg-[var(--mascot-orange)]/5"
               aria-label="Frequently asked questions"
             >
               FAQ
-            </Link>
+            </button>
           </nav>
 
           {/* Mobile menu button */}
@@ -98,22 +129,20 @@ export function Header() {
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-[var(--mascot-orange)]/20 bg-white/95 backdrop-blur-sm">
             <nav className="px-4 py-4 space-y-2" role="navigation" aria-label="Mobile navigation">
-              <Link 
-                href="#how-it-works" 
-                className="block px-4 py-3 text-gray-600 hover:text-[var(--mascot-orange)] hover:bg-[var(--mascot-orange)]/5 rounded-[var(--radius-bubble)] font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button 
+                onClick={() => scrollToSection('how-it-works')}
+                className="block w-full text-left px-4 py-3 text-gray-600 hover:text-[var(--mascot-orange)] hover:bg-[var(--mascot-orange)]/5 rounded-[var(--radius-bubble)] font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2"
                 aria-label="Learn how Morning Buddy works"
               >
                 How it works
-              </Link>
-              <Link 
-                href="#faq" 
-                className="block px-4 py-3 text-gray-600 hover:text-[var(--mascot-orange)] hover:bg-[var(--mascot-orange)]/5 rounded-[var(--radius-bubble)] font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => scrollToSection('faq')}
+                className="block w-full text-left px-4 py-3 text-gray-600 hover:text-[var(--mascot-orange)] hover:bg-[var(--mascot-orange)]/5 rounded-[var(--radius-bubble)] font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--mascot-orange)] focus:ring-offset-2"
                 aria-label="Frequently asked questions"
               >
                 FAQ
-              </Link>
+              </button>
             </nav>
           </div>
         )}

@@ -21,9 +21,9 @@ describe('Callout', () => {
   it('renders step descriptions', () => {
     render(<Callout />);
     
-    expect(screen.getByText(/customise the buddies voice and personality/)).toBeInTheDocument();
-    expect(screen.getByText(/set a time you want to be woken up/)).toBeInTheDocument();
-    expect(screen.getByText(/A better way to wake up/)).toBeInTheDocument();
+    expect(screen.getByText(/Build your buddy: Choose from a library of voices/)).toBeInTheDocument();
+    expect(screen.getByText(/Set your wake-up plan: Pick the days and times/)).toBeInTheDocument();
+    expect(screen.getByText(/Enjoy better mornings: At your chosen time/)).toBeInTheDocument();
   });
 
   it('has proper heading hierarchy', () => {
