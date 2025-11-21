@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /thank-you
-
-Sitemap: https://morning-buddy.github.io/waitingList/sitemap.xml

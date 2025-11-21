@@ -1,129 +1,95 @@
-# Morning Buddy - Waiting List
+# Morning Buddy - Landing Page
 
-A public waiting list site to get feedback and test users for Alpha and Betas of the Morning Buddy app.
+A fast, lightweight landing page for Morning Buddy, an AI-powered wake-up companion app.
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Quick Start
 
-## About Morning Buddy
+The site is a static HTML page that can be served directly. All assets are in the `public` folder.
 
-Morning Buddy is an AI-powered alarm clock that wakes you up with a personalized phone call instead of a jarring alarm sound. Your AI buddy can have conversations with you, share motivational messages, or even tell jokes to help you start your day on a positive note.
+### Local Development
 
-## Features
-
-- 🎨 Professional, accessible design with no emojis
-- 📱 Responsive design optimized for all devices
-- ♿ WCAG compliant accessibility features
-- 🎭 Interactive sun mascot with eye tracking
-- 📧 Email waitlist with double opt-in confirmation
-- 🗄️ Supabase database integration
-- 📨 SendGrid email system
-- 🧪 Comprehensive test suite (Jest + Playwright)
-- 🚀 Optimized for performance and SEO
-
-## Getting Started
-
-First, run the development server:
+You can use any static server. For example:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Using Python
+python3 -m http.server 8000
+
+# Using Node.js http-server
+npx http-server -p 8000
+
+# Using PHP
+php -S localhost:8000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Environment Variables
-
-Create a `.env.local` file with the following variables:
-
-```bash
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-
-# SendGrid
-SENDGRID_API_KEY=your_sendgrid_api_key
-FROM_EMAIL=hello@morningbuddy.co.uk
-
-# Site
-SITE_URL=https://morningbuddy.co.uk
-```
-
-## Testing
-
-Run the test suite:
-
-```bash
-# Unit tests
-npm run test
-
-# E2E tests
-npm run test:e2e
-
-# All tests
-npm run test:all
-```
+Then open [http://localhost:8000](http://localhost:8000) in your browser.
 
 ## Deployment
 
-### GitHub Pages (Current Setup)
+Simply upload the following files to your web host:
+- `index.html`
+- `public/` folder (contains all images)
 
-This project is configured to automatically deploy to GitHub Pages using GitHub Actions:
+The site works on any static hosting service:
+- GitHub Pages
+- Netlify
+- Vercel
+- Cloudflare Pages
+- AWS S3
+- Any traditional web host
 
-1. **Automatic Deployment**: Every push to the `main` branch triggers a deployment
-2. **Static Export**: The app is built as a static site (API routes are replaced with third-party services)
-3. **Custom Domain**: Configure your custom domain in the repository settings
+## Features
 
-#### Setup Steps:
+- ✨ Pure HTML/CSS/JavaScript - no build step required
+- 🚀 Loads instantly - optimized for performance
+- 📱 Fully responsive design
+- 🖼️ WebP images with PNG fallbacks
+- ♿ Accessible navigation and interactions
+- 🎨 Smooth animations and transitions
+- 📧 Form integration with Formspree
+- 📄 Legal modals (Privacy, Terms, Cookies)
 
-1. Go to your repository settings
-2. Navigate to "Pages" section
-3. Set source to "GitHub Actions"
-4. The site will be available at: `https://morning-buddy.github.io/waitingList`
-
-#### Environment Variables for GitHub Pages:
-
-Add these secrets in your repository settings (Settings > Secrets and variables > Actions):
+## Structure
 
 ```
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+/
+├── index.html          # Main page
+└── public/             # All assets
+    ├── App_Icon.webp/png
+    ├── App_Alarm.webp/png
+    ├── App_Call.webp/png
+    ├── App_Buddies.webp/png
+    ├── Aurora_*.webp/png
+    ├── Ray_*.webp/png
+    ├── Sunny_*.webp/png
+    ├── Logo.webp/png
+    └── Text_Black.webp/png
 ```
 
-#### Third-Party Services for Static Deployment:
+**Important:** All images are referenced as `public/image.webp` in the HTML. Keep the `public/` folder structure intact when deploying.
 
-Since GitHub Pages doesn't support server-side functionality, the app uses:
+## Customization
 
-- **Formspree** for form submissions (replace `YOUR_FORM_ID` in SignupForm.tsx)
-- **Static counter** for signup count (update manually in SocialProof.tsx)
+All styles are embedded in `index.html` for maximum performance. To customize:
 
-### Alternative Deployments
+1. Edit the CSS variables in the `:root` section
+2. Modify colors, fonts, or spacing
+3. Update content directly in the HTML
+4. Replace images in the `public` folder
 
-#### Vercel (Recommended for Full Features)
-The easiest way to deploy with full API functionality:
+## Performance
 
-```bash
-# Install Vercel CLI
-npm i -g vercel
+- First Contentful Paint: < 1s
+- Time to Interactive: < 2s
+- Lighthouse Score: 95+
+- Total page size: < 500KB
 
-# Deploy
-vercel
-```
+## Browser Support
 
-#### Netlify
-1. Connect your GitHub repository
-2. Set build command: `npm run build`
-3. Set publish directory: `out`
-4. Add environment variables in Netlify dashboard
+- Chrome/Edge (last 2 versions)
+- Firefox (last 2 versions)
+- Safari (last 2 versions)
+- Mobile browsers (iOS Safari, Chrome Mobile)
 
-## Learn More
+## Contact
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For questions about Morning Buddy, email hello@morningbuddy.co.uk
