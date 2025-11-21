@@ -74,7 +74,7 @@ Successfully migrated the Morning Buddy website from a complex Next.js applicati
 ✅ Responsive layout (mobile, tablet, desktop)
 ✅ Interactive app screenshots
 ✅ Smooth scroll navigation
-✅ Form integration (Formspree)
+✅ Form integration (Tally)
 ✅ Legal modals (Privacy, Terms, Cookies)
 ✅ Accessibility features
 ✅ SEO optimization

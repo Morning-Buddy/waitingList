@@ -45,7 +45,7 @@ The site works on any static hosting service:
 - 🖼️ WebP images with PNG fallbacks
 - ♿ Accessible navigation and interactions
 - 🎨 Smooth animations and transitions
-- 📧 Form integration with Formspree
+- 📧 Form integration with Tally
 - 📄 Legal modals (Privacy, Terms, Cookies)
 
 ## Structure
